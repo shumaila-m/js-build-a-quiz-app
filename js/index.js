@@ -13,10 +13,36 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
+  const submit = document.querySelector("#btnSubmit");
+  //const reset = document.querySelector("#btnReset");
   start.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
   });
+// function to submit form
+  submit.addEventListener("click", function (e) {
+    endTest();
+  });
+    
+
+    function endTest(){
+    let score = calculateScore();
+    document.getElementById("score").innerHTML = `Your Score is${score}`;
+    }
+    // function to display the countdown timer
+  let timeleft = 30;
+  let downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      document.getElementById("time").innerHTML = "Finished";
+    } else {
+      document.getElementById("time").innerHTML = timeleft + " seconds remaining";
+    }
+    timeleft -= 1;
+  }, 1000);
+
+
+
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
   // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
@@ -36,8 +62,19 @@ window.addEventListener("DOMContentLoaded", () => {
       o: ["Sydney", "Canberra", "Melbourne", "Perth"],
       a: 1,
     },
+    {
+      q: "What is the name of the Deadly virus",
+      o: ["Antrax", "Killvi", "Corona", "Wuhanvi"],
+      a:2
+  },
+  {
+    q: "How many seasons in one year?",
+    o: ['1' , '2' , '3' , '4'],
+    a:3
+},
   ];
 
+  
   // function to Display the quiz questions and answers from the object
   const displayQuiz = () => {
     const quizWrap = document.querySelector("#quizWrap");
@@ -54,7 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
       quizWrap.innerHTML = quizDisplay;
     });
   };
-
+  
   // Calculate the score
   const calculateScore = () => {
     let score = 0;
@@ -68,14 +105,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
-        }
-
+          
+        liElement.style.backgroundColor = "green";
         if (radioElement.checked) {
           // code for task 1 goes here
+          score++;
+        }
+
+        
         }
       }
     });
+    return score;
   };
+  
+
 
   // call the displayQuiz function
   displayQuiz();
