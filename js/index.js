@@ -15,6 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
   const submit = document.querySelector("#btnSubmit");
   //const reset = document.querySelector("#btnReset");
+  
   start.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
@@ -25,10 +26,13 @@ window.addEventListener("DOMContentLoaded", () => {
   });
     
 
-    function endTest(){
+  function endTest(){
     let score = calculateScore();
-    document.getElementById("score").innerHTML = `Your Score is${score}`;
-    }
+    document.getElementById("score").innerHTML = ` Score ${score}`;
+    
+    };
+
+    
     // function to display the countdown timer
   let timeleft = 30;
   let downloadTimer = setInterval(function(){
