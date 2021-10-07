@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let score = calculateScore();
     document.getElementById("score").innerHTML = ` Score ${score}`;
     
-    };
+  };
 
     
     // function to display the countdown timer
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
       clearInterval(downloadTimer);
       document.getElementById("time").innerHTML = "Finished";
     } else {
-      document.getElementById("time").innerHTML = timeleft + " seconds remaining";
+      document.getElementById("time").innerHTML = timeleft + " seconds";
     }
     timeleft -= 1;
   }, 1000);
