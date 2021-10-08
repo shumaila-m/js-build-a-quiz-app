@@ -38,6 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let timeleft = 10;
   let downloadTimer = setInterval(function(){
     if(timeleft <= 0){
+      endTest();
       clearInterval(downloadTimer);
       document.getElementById("time").innerHTML = "Finished";
     } else {
