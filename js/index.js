@@ -29,12 +29,13 @@ window.addEventListener("DOMContentLoaded", () => {
   function endTest(){
     let score = calculateScore();
     document.getElementById("score").innerHTML = ` Score ${score}`;
+    submit.style.display = "none";
     
   };
 
     
     // function to display the countdown timer
-  let timeleft = 30;
+    let timeleft = 10;
   let downloadTimer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(downloadTimer);
@@ -44,7 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     timeleft -= 1;
   }, 1000);
-
 
 
   // quizArray QUESTIONS & ANSWERS
